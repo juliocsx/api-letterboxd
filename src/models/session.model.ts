@@ -22,6 +22,7 @@ export class Session extends Model {
 
   @Column({
     type: DataType.STRING,
+    unique: true
   })
   token: String;
 
