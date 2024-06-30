@@ -4,7 +4,7 @@ import {
   deleteUser,
   getUsers,
   loginUser,
-  updateEmailUser,
+  updateUser,
 } from "../controllers/User.controller";
 import { authenticationMiddleware } from "../middlewares/auth.middleware";
 
@@ -13,7 +13,7 @@ const router = Router();
 router.post("/login", loginUser)
 router.get("/users", authenticationMiddleware, getUsers, );
 router.post("/users", createUser);
-router.patch("/users/:id", updateEmailUser);
+router.patch("/users/:id", updateUser);
 router.delete("/users/:id", deleteUser);
 
 export default router;

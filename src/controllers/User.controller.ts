@@ -66,7 +66,7 @@ export const createUser = async (
   }
 };
 
-export const updateEmailUser = async (req: Request, res: Response, next: NextFunction) => {
+export const updateUser = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { email, username, password, phone, birthdate } = req.body;
     const id = req.params.id;
