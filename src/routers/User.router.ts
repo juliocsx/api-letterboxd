@@ -13,7 +13,7 @@ const router = Router();
 router.post("/login", loginUser)
 router.get("/users", authenticationMiddleware, getUsers, );
 router.post("/users", createUser);
-router.patch("/users/:id", updateUser);
-router.delete("/users/:id", deleteUser);
+router.patch("/users/:id",  authenticationMiddleware, updateUser);
+router.delete("/users/:id", authenticationMiddleware, deleteUser);
 
 export default router;
