@@ -1,4 +1,3 @@
-import { table } from "console";
 import {
     Table,
     Column,
