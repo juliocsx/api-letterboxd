@@ -41,7 +41,7 @@ import {
     sinopse: String;
 
     @Column({
-    type: DataType.NUMBER,
+    type: DataType.INTEGER,
     })
     duration:Number;
   }
