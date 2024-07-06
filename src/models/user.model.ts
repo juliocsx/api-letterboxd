@@ -26,11 +26,13 @@ export class User extends Model<User> {
 
   @Column({
     type: DataType.TEXT,
+    unique: true
   })
   username: String;
 
   @Column({
     type: DataType.TEXT,
+    unique: true
   })
   email: String;
 
@@ -46,6 +48,7 @@ export class User extends Model<User> {
 
   @Column({
     type: DataType.TEXT,
+    unique: true
   })
   cpf: String;
 
