@@ -31,9 +31,9 @@ import {
     director:String;
     
     @Column({
-    type: DataType.TEXT,
+    type: DataType.DATE,
     })
-    rating: Number;
+    release_date:Date ;
 
     @Column({
     type: DataType.STRING,

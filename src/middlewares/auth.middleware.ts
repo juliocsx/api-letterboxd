@@ -5,7 +5,7 @@ import { Session } from "../models/session.model";
 const SESSION_EXPIRATION_TIME = process.env.SESSION_EXPIRATION_TIME || 3600000;
 
 // função de resposta de erro. 'unauthorizedResponse' => reduz a duplicação de códigos.
-export const unauthorizedResponse = (res: Response, message: string) => {
+ const unauthorizedResponse = (res: Response, message: string) => {
   return res.status(401).json({
     message:"Você não está autorizado a fazer isso"
   });
