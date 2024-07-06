@@ -1,8 +1,8 @@
-import { NextFunction, Request, Response } from "express";
+import { NextFunction, Request, Response } from "express";36
 import { Session } from "../models/session.model";
 
 // Configuração do tempo de expiração em milissegundos
-const SESSION_EXPIRATION_TIME = process.env.SESSION_EXPIRATION_TIME || 120000;
+const SESSION_EXPIRATION_TIME = process.env.SESSION_EXPIRATION_TIME || 3600000;
 
 // função de resposta de erro. 'unauthorizedResponse' => reduz a duplicação de códigos.
 const unauthorizedResponse = (res: Response, message: string) => {
