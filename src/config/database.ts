@@ -13,4 +13,4 @@ const sequelize = new Sequelize({
   models: [User, Session, Streaming],
 });
 
-export default Sequelize
+export default sequelize
