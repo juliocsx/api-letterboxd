@@ -37,16 +37,10 @@ export const createUser = async (
   try {
     const { name, username, email, password, phone, cpf, birthdate } = req.body;
 
-    if (!name) {
+    if (!name || !email || !password || !cpf) {
       return res
         .status(400)
-        .json({ message: "cannot create a user without name" });
-    }
-
-    if (!username) {
-      return res
-        .status(400)
-        .json({ message: "cannot create a user without username" });
+        .json({ message: "Required field not filled" });
     }
 
     const hashedPassword = await argon.hash(password);
@@ -72,19 +66,30 @@ export const createUser = async (
   }
 };
 
-export const updateEmailUser = async (req: Request, res: Response, next: NextFunction) => {
+export const updateUser = async (req: Request, res: Response, next: NextFunction) => {
   try {
-    const { email, cpf } = req.body;
+    const { email, username, password, phone, birthdate } = req.body;
     const id = req.params.id;
 
     let updatedContent: any = {};
 
+    if (username) {
+      updatedContent.username = username;
+    }
     if (email) {
       updatedContent.email = email;
     }
-
-    if (cpf) {
-      updatedContent.cpf = cpf;
+    if (password) {
+      console.log("antes de hashear: ", password);
+      const hashedPassword = await argon.hash(password);
+      console.log("depois de hashear: ", hashedPassword);
+      updatedContent.password = hashedPassword;
+    }
+    if (phone) {
+      updatedContent.phone = phone;
+    }
+    if (birthdate) {
+      updatedContent.birthdate = birthdate;
     }
 
     const updatedUser = await User.update(
@@ -116,7 +121,7 @@ export const deleteUser = async (req: Request, res: Response, next: NextFunction
   }
 };
 
-export const loginUser = async (req: Request, res: Response) => {
+export const loginUser = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { username, password } = req.body;
 
