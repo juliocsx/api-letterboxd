@@ -1,6 +1,7 @@
 import { Sequelize } from "sequelize-typescript";
 import { User } from "../models/user.model";
 import { Session } from "../models/session.model";
+import { Streaming } from "../models/streaming.model";
 require('dotenv').config();
 
 const sequelize = new Sequelize({
@@ -9,7 +10,7 @@ const sequelize = new Sequelize({
   username: process.env.DB_USER || "user",
   password: process.env.DB_PASSWORD || "password",
   database: process.env.DB_DATABASE || "postgres",
-  models: [User, Session],
+  models: [User, Session, Streaming],
 });
 
 export default sequelize
